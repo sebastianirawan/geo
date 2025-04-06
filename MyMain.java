@@ -26,7 +26,8 @@ public class MyMain {
 			else if (7==ch) {}
 			else if (8==ch) {}			
 			ch = sc.nextInt();				// pilihan berikutnya
-		}			
+		}
+		sc.close();			
         //System.out.println(CG.ccw(p,q,t));
     }
 }
