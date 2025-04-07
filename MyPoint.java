@@ -20,8 +20,9 @@ public class MyPoint {
      * @return
      */
     double distanceToOtherPoints(MyPoint o) {
-		double dist = 0.0;
-		
+        double dx = this.x - o.x;
+        double dy = this.y - o.y;
+		double dist = Math.sqrt(dx*dx + dy*dy); //jarak antara titik menggunakan rumus euclidean distance
         return dist;
     }
     
@@ -31,8 +32,7 @@ public class MyPoint {
      * @return
      */
     double distanceToLineSegment(MyLineSegment l) {
-		double res = 0.0;
-        //panggil aja dari l, l.distanceToPoint(this);
+		double res = l.distanceToPoint(this);
         return res;
     }
 }

@@ -3,6 +3,7 @@ public class MyLineSegment {
     MyPoint start;
     /** komen di sini */
     MyPoint end;
+    double len;
 
     /**
      * konstruktor
@@ -12,6 +13,7 @@ public class MyLineSegment {
     MyLineSegment(MyPoint start, MyPoint end) {
         this.start = start;
         this.end = end;
+        this.len = start.distanceToOtherPoints(end);
     }
 
     /**
@@ -19,10 +21,40 @@ public class MyLineSegment {
      * @param p
      * @return
      */
-    double distanceToPoint(MyPoint p) {
-		double dist = 0.0;	//menyimpan jarak
+    double distanceToPoint(MyPoint p) { //https://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment
+		double x = p.x, y = p.y;
+        double x1 = this.start.x, y1 = this.start.y;
+        double x2 = this.end.x, y2 = this.end.y;
 
-        return dist;
+        double A = x - x1;
+        double B = y - y1;
+        double C = x2 - x1;
+        double D = y2 - y1;
+
+        double dot = A * C + B * D;
+        double len_sq = C * C + D * D;
+        double param = -1;
+        if (len_sq != 0) { //jika panjang segmen bukan nol
+            param = dot / len_sq;
+        }
+
+        double xx, yy;
+
+        if (param < 0) {
+            xx = x1;
+            yy = y1;
+        } else if (param > 1) {
+            xx = x2;
+            yy = y2;
+        } else {
+            xx = x1 + param * C;
+            yy = y1 + param * D;
+        }
+
+        double dx = x - xx;
+        double dy = y - yy;
+
+        return Math.sqrt(dx * dx + dy * dy);
     }
 
     /**
