@@ -73,10 +73,33 @@ public class MyLineSegment {
      * @param other
      * @return
      */
-    boolean isIntersect(MyLineSegment other) {
-		boolean potong = false;
-		
-        return potong;
+    boolean isIntersect(MyLineSegment other) {//https://www.naukri.com/code360/library/check-if-two-line-segments-intersect
+		MyPoint a1 = this.start;
+        MyPoint b1 = this.end;
+        MyPoint a2 = other.start;
+        MyPoint b2 = other.end;
+
+        double d1 = this.leftTurnToPoint(a2); // ccw(a1, b1, a2)
+        double d2 = this.leftTurnToPoint(b2); // ccw(a1, b1, b2)
+        double d3 = other.leftTurnToPoint(a1); // ccw(a2, b2, a1)
+        double d4 = other.leftTurnToPoint(b1); // ccw(a2, b2, b1)
+
+        if (((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) &&
+            ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0))) {
+            return true;
+        }
+
+        if ((d1 == 0 && onSegment(a1, b1, a2)) ||
+            (d2 == 0 && onSegment(a1, b1, b2)) ||
+            (d3 == 0 && onSegment(a2, b2, a1)) ||
+            (d4 == 0 && onSegment(a2, b2, b1))) {
+            return true;
+        }
+
+        return false;
     }
 
+    boolean onSegment(MyPoint p, MyPoint q, MyPoint r) {
+        return r.x <= Math.max(p.x, q.x) && r.x >= Math.min(p.x, q.x) && r.y <= Math.max(p.y, q.y) && r.y >= Math.min(p.y, q.y);
+    }
 }
