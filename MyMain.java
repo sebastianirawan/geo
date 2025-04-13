@@ -42,7 +42,18 @@ public class MyMain {
 				else
 					System.out.println("Tidak");
 			}
-			else if (5==ch) {}
+			else if (5==ch) {
+				MyPolygon polygon = new MyPolygon();
+				int n = sc.nextInt();
+				for (int i = 0; i < n; i++) {
+					MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
+					polygon.addPoint(p);
+				}
+				if (polygon.isConvex())
+					System.out.println("Convex");
+				else
+					System.out.println("Concave");
+			}
 			else if (6==ch) {}
 			else if (7==ch) {}
 			else if (8==ch) {}			
