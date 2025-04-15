@@ -34,7 +34,7 @@ public class MyLineSegment {
         double dot = A * C + B * D;
         double len_sq = C * C + D * D;
         double param = -1;
-        if (len_sq != 0) { //jika panjang segmen bukan nol
+        if (len_sq != 0) {
             param = dot / len_sq;
         }
 
@@ -79,10 +79,10 @@ public class MyLineSegment {
         MyPoint a2 = other.start;
         MyPoint b2 = other.end;
 
-        double d1 = this.leftTurnToPoint(a2); // ccw(a1, b1, a2)
-        double d2 = this.leftTurnToPoint(b2); // ccw(a1, b1, b2)
-        double d3 = other.leftTurnToPoint(a1); // ccw(a2, b2, a1)
-        double d4 = other.leftTurnToPoint(b1); // ccw(a2, b2, b1)
+        double d1 = this.leftTurnToPoint(a2);
+        double d2 = this.leftTurnToPoint(b2);
+        double d3 = other.leftTurnToPoint(a1);
+        double d4 = other.leftTurnToPoint(b1);
 
         if (((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) &&
             ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0))) {

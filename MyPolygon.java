@@ -60,9 +60,21 @@ public class MyPolygon {
      * @return
      */
     double area() {
-		double area = 0.0;
-		
-        return area;
+		int n = Points.size();
+        if (n < 3) return 0.0;
+
+        MyPoint p0 = Points.get(0);
+        double totalArea = 0.0;
+
+        for (int i = 1; i < n - 1; i++) {
+            MyPoint pi = Points.get(i);
+            MyPoint pi1 = Points.get(i + 1);
+
+            MyTriangle triangle = new MyTriangle(p0, pi, pi1);
+            totalArea += triangle.area();
+        }
+
+        return totalArea;
     }
 
     /**
