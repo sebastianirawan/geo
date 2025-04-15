@@ -83,9 +83,26 @@ public class MyPolygon {
      * @param p
      * @return
      */
-    boolean isPointInside(MyPoint p) {
+    boolean isPointInside(MyPoint p) { //https://www.youtube.com/watch?v=RSXM9bgqxJM
 		boolean inside = true;
-		
+        int counter = 0;
+		int n = Points.size(); //jumlah titik polygon
+        if (n < 3) return false; //jika kurang dari 3 -> bukan polygon
+
+        for (int i = 0; i < n; i++) {//loop untuk semua titik dalam poligon
+            MyPoint p0 = Points.get(i);//titik sekarang
+            MyPoint p1 = Points.get((i + 1) % n);//titik setelahnya
+            //Untuk setiap sisi poligon, diperiksa apakah sinar horizontal ke kanan dari titik p memotong sisi
+            //Jika iya, maka nilai counter akan ditambah satu.
+            //Mengecek apakah p.y berada di antara p0.y dan p1.y secara vertikal.
+            //Menghitung titik potong sinar horizontal dari p dengan sisi p0–p1. Jika p.x lebih kecil, berarti sinar memotong sisi tersebut.
+            if ((p.y<p0.y)!=(p.y<p1.y)& p.x<p0.x+((double)(p.y-p0.y)/(p1.y-p0.y)*(p1.x-p0.x))){
+                counter++;
+            }
+        }
+        //memastikan apakah nilai dari counter genap atau ganjil
+        //kalau genap diluar, ganjil di dalam
+        inside = (counter%2==1);
         return inside;
     }
 
