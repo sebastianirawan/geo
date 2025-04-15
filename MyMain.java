@@ -10,14 +10,14 @@ public class MyMain {
 			if (1==ch) {
 				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble()); //input 2 point p q. buat object point baru dengan param x dan y (double)
 				MyPoint q = new MyPoint(sc.nextDouble(),sc.nextDouble());
-				System.out.printf("%.3f", p.distanceToOtherPoints(q));//print jarak ke point lain dengan ketepatan 3 angka belakang koma
+				System.out.printf("%.3f\n", p.distanceToOtherPoints(q));//print jarak ke point lain dengan ketepatan 3 angka belakang koma
 			}
 			else if (2==ch) {
 				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble()); //input 3 point p q r. buat object point baru dengan param x dan y (double)
 				MyPoint q = new MyPoint(sc.nextDouble(),sc.nextDouble());
 				MyPoint r = new MyPoint(sc.nextDouble(),sc.nextDouble()); 
 				MyLineSegment l = new MyLineSegment(q,r); //buat object line segment dengan point q dan r
-				System.out.printf("%.3f", l.distanceToPoint(p));//print jarak line segement ke point dengan ketepatan 3 angka belakang koma
+				System.out.printf("%.3f\n", l.distanceToPoint(p));//print jarak line segement ke point dengan ketepatan 3 angka belakang koma
 			}
 			else if (3==ch) { //fungsi 3
 				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
@@ -61,7 +61,7 @@ public class MyMain {
 					MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
 					polygon.addPoint(p);
 				}
-				System.out.printf("%.3f", polygon.area());//print luas polygon
+				System.out.printf("%.3f\n", polygon.area());//print luas polygon
 			}
 			else if (7==ch) {}
 			else if (8==ch) {}			
