@@ -63,8 +63,32 @@ public class MyMain {
 				}
 				System.out.printf("%.3f\n", polygon.area());//print luas polygon
 			}
-			else if (7==ch) {}
-			else if (8==ch) {}			
+			else if (7==ch) {
+				MyPolygon polygon = new MyPolygon();//buat polygon baru (sama seperti 5)
+				int n = sc.nextInt();
+				for (int i = 0; i < n; i++) {
+					MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
+					polygon.addPoint(p);
+				}
+				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble()); 
+				if(polygon.isPointInside(p)){ //cek apakah point ada di dalam atau diular
+					System.out.println("In");
+				}
+				else{
+					System.out.println("Out");
+				}
+			}
+			else if (8==ch) {
+				MyPointSet points = new MyPointSet();//buat polygon baru (sama seperti 5)
+				int n = sc.nextInt();
+				for (int i = 0; i < n; i++) {
+					MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
+					points.addPoint(p);
+				}
+				points.sortByPolarAngle();
+				points.printPoints();
+				
+			}			
 			ch = sc.nextInt();				// pilihan berikutnya
 		}
 		sc.close();
