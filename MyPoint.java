@@ -20,10 +20,10 @@ public class MyPoint {
      * @return
      */
     double distanceToOtherPoints(MyPoint o) {
-        double dx = this.x - o.x;
-        double dy = this.y - o.y;
-		double dist = Math.sqrt(dx*dx + dy*dy); //jarak antara titik menggunakan rumus euclidean distance
-        return dist;
+        double dx = this.x - o.x;//selisih koordinat x antara point ini dengan point lain
+        double dy = this.y - o.y;//selisih koordinat y antara point ini dengan point lain
+		double dist = Math.sqrt(dx*dx + dy*dy); //jarak antara point menggunakan rumus euclidean distance
+        return dist; //kembalikan jaraknya
     }
     
     /**
@@ -32,7 +32,7 @@ public class MyPoint {
      * @return
      */
     double distanceToLineSegment(MyLineSegment l) {
-		double res = l.distanceToPoint(this);
-        return res;
+		double res = l.distanceToPoint(this); //panggil method distance to point milik line segment
+        return res; //kembalikan distancenya
     }
 }
