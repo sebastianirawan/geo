@@ -8,16 +8,16 @@ public class MyMain {
 		int ch = sc.nextInt();				// pilihan fungsi atau keluar
 		while(ch!=0) {					//selama tidak memilih keluar
 			if (1==ch) {
-				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
+				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble()); //input 2 point p q. buat object point baru dengan param x dan y (double)
 				MyPoint q = new MyPoint(sc.nextDouble(),sc.nextDouble());
-				System.out.printf("%.3f", p.distanceToOtherPoints(q));
+				System.out.printf("%.3f", p.distanceToOtherPoints(q));//print jarak ke point lain dengan ketepatan 3 angka belakang koma
 			}
 			else if (2==ch) {
-				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
+				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble()); //input 3 point p q r. buat object point baru dengan param x dan y (double)
 				MyPoint q = new MyPoint(sc.nextDouble(),sc.nextDouble());
-				MyPoint r = new MyPoint(sc.nextDouble(),sc.nextDouble());
-				MyLineSegment l = new MyLineSegment(q,r);
-				System.out.printf("%.3f", l.distanceToPoint(p));
+				MyPoint r = new MyPoint(sc.nextDouble(),sc.nextDouble()); 
+				MyLineSegment l = new MyLineSegment(q,r); //buat object line segment dengan point q dan r
+				System.out.printf("%.3f", l.distanceToPoint(p));//print jarak line segement ke point dengan ketepatan 3 angka belakang koma
 			}
 			else if (3==ch) { //fungsi 3
 				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
@@ -31,35 +31,43 @@ public class MyMain {
 				System.out.println(arah);
 			}
 			else if (4==ch) {
-				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
+				MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble()); //input 4 point p q r s. buat object point baru dengan param x dan y (double)
 				MyPoint q = new MyPoint(sc.nextDouble(),sc.nextDouble());
 				MyPoint r = new MyPoint(sc.nextDouble(),sc.nextDouble());
 				MyPoint s = new MyPoint(sc.nextDouble(),sc.nextDouble());
-				MyLineSegment l = new MyLineSegment(p,q);
+				MyLineSegment l = new MyLineSegment(p,q); //buat 2 object line segment dengan point p q dan r s
 				MyLineSegment m = new MyLineSegment(r,s);
-				if (l.isIntersect(m))
+				if (l.isIntersect(m))//jika saling intersect, print ya
 					System.out.println("Ya");
-				else
+				else//jika tidak, print tidak
 					System.out.println("Tidak");
 			}
 			else if (5==ch) {
-				MyPolygon polygon = new MyPolygon();
+				MyPolygon polygon = new MyPolygon();//init polygon baru
+				int n = sc.nextInt();//input banyak point yang akan dijadikan polygon
+				for (int i = 0; i < n; i++) {//untuk setiap point
+					MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());//input point
+					polygon.addPoint(p);//tambahkan ke polygon
+				}
+				if (polygon.isConvex())//jika polygon convex, print convex
+					System.out.println("Convex");
+				else//jika polygon concave, print concave
+					System.out.println("Concave");
+			}
+			else if (6==ch) {
+				MyPolygon polygon = new MyPolygon();//buat polygon baru (sama seperti 5)
 				int n = sc.nextInt();
 				for (int i = 0; i < n; i++) {
 					MyPoint p = new MyPoint(sc.nextDouble(),sc.nextDouble());
 					polygon.addPoint(p);
 				}
-				if (polygon.isConvex())
-					System.out.println("Convex");
-				else
-					System.out.println("Concave");
+				System.out.printf("%.3f", polygon.area());//print luas polygon
 			}
-			else if (6==ch) {}
 			else if (7==ch) {}
 			else if (8==ch) {}			
 			ch = sc.nextInt();				// pilihan berikutnya
 		}
-		sc.close();		
+		sc.close();
         //System.out.println(CG.ccw(p,q,t));
     }
 }
